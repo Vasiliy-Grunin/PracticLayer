@@ -3,3 +3,6 @@
 ################################################################################
 
 /Library/BAL/bin/Debug/net5.0
+/Library/BAL/obj
+/Library/Dal/bin/Debug/net5.0
+/Library/PAlWebAppLibrary/bin/Debug/net5.0
