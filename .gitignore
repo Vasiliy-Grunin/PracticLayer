@@ -1,8 +1,3 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/Library/BAL/bin/Debug/net5.0
-/Library/BAL/obj
-/Library/Dal/bin/Debug/net5.0
-/Library/PAlWebAppLibrary/bin/Debug/net5.0
