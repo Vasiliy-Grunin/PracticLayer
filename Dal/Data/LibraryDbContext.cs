@@ -22,13 +22,13 @@ namespace DAL.Data
 
         public virtual DbSet<AuthorModel> Authors { get; set; }
 
-        //public DbSet<AuthorInheritance> AuthorInheritances { get; set; }
+        public DbSet<AuthorInheritance> AuthorInheritances { get; set; }
 
-        //public DbSet<BookInheritance> BookInheritances { get; set; }
+        public DbSet<BookInheritance> BookInheritances { get; set; }
 
-        //public DbSet<GenryInheritance> GenryInheritances { get; set; }
+        public DbSet<GenryInheritance> GenryInheritances { get; set; }
 
-        //public DbSet<PeopleInheritance> PeopleInheritances { get; set; }
+        public DbSet<PeopleInheritance> PeopleInheritances { get; set; }
 
 
         public void AddCascadingObject(object rootEntity)
@@ -42,21 +42,21 @@ namespace DAL.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<PeopleModel>()
-            //    .HasDiscriminator()
-            //    .IsComplete(false);
+            modelBuilder.Entity<PeopleModel>()
+                .HasDiscriminator()
+                .IsComplete(false);
 
-            //modelBuilder.Entity<AuthorModel>()
-            //    .HasDiscriminator()
-            //    .IsComplete(false);
+            modelBuilder.Entity<AuthorModel>()
+                .HasDiscriminator()
+                .IsComplete(false);
 
-            //modelBuilder.Entity<GenryModel>()
-            //    .HasDiscriminator()
-            //    .IsComplete(false);
+            modelBuilder.Entity<GenryModel>()
+                .HasDiscriminator()
+                .IsComplete(false);
 
-            //modelBuilder.Entity<BookModel>()
-            //    .HasDiscriminator()
-            //    .IsComplete(false);
+            modelBuilder.Entity<BookModel>()
+                .HasDiscriminator()
+                .IsComplete(false);
 
 
             modelBuilder.Entity<PeopleModel>()
