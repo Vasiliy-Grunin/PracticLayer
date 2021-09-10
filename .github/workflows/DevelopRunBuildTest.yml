@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 5.0.x
 
     - name: Build
-      run: Library/dotnet build --no-restore
+      run: dotnet build --no-restore
       
     - name: Test
-      run: Library/dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal
