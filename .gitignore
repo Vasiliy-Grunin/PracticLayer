@@ -6,3 +6,11 @@
 /Library/Dal/obj
 /Library/PAlWebAppLibrary/obj/Debug/net5.0
 /Library/PAlWebAppLibrary/obj/Release/net5.0
+/BAL/bin/Debug/net5.0
+/BAL/obj
+/BAL.Test/bin/Debug/net5.0
+/BAL.Test/obj
+/Dal/bin/Debug/net5.0
+/Dal/obj
+/PAlWebAppLibrary/bin/Debug/net5.0
+/PAlWebAppLibrary/obj
