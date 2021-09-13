@@ -106,18 +106,19 @@ namespace Service.GynericRepositorys
             return true;
         }
 
-        public virtual bool Update(TDto entity)
+        public virtual bool Update(TDto dto)
         {
-            var dbEntity = GetEntity(entity);
-            if (entity is null || Contains(dbEntity))
+            if (dto is null)
                 return false;
 
-            context.Set<TEntity>().Update(dbEntity);
-            return true;
+            var entity = GetEntity(dto);
+            var result = context.Set<TEntity>().Update(entity);
+            return result is not null;
         }
 
         protected bool Contains(TEntity entity)
-            => context.Set<TEntity>().Contains(entity);
+            => context.Set<TEntity>().Contains(entity)
+            & context.Set<TEntity>().Find(entity) is not null;
 
         protected TEntity GetEntity(TDto dto)
         {
