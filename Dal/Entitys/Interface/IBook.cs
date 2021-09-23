@@ -11,8 +11,8 @@ namespace DAL.Entitys.Interfaces
         where TAuthor : IPeople
         where EGenry : class
     {
-        TAuthor Author { get; set; }
-        List<EGenry> Genre { get; set; }
+        //TAuthor Author { get; set; }
+        ICollection<EGenry> Genre { get; set; }
     }
 
     interface IBook

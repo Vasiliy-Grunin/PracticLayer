@@ -1,4 +1,4 @@
-﻿using Service.UnityOfwork;
+﻿using DataServices.UnityOfwork;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace Library.PAL.Controllers
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        [HttpGet("PeopleDto/{Name}/")]
+        [HttpGet("AuthorDto/{Name}/")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AuthorDto>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<List<AuthorDto>> GetAuthor(string name)
@@ -72,6 +72,7 @@ namespace Library.PAL.Controllers
         /// <param name="person"></param>
         /// <returns></returns>
         [HttpPost("AuthorDto /LastNameNameMidleName/")]
+        [ValidateAntiForgeryToken]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AuthorDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AuthorDto> AddAuthor([FromBody][Bind("LastName,Name,MidleName")] AuthorDto author)

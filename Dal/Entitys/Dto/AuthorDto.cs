@@ -9,7 +9,7 @@ namespace DAL.Entitys.Dto
     [DataContract]
     public class AuthorDto : AuthorBaseDto, IPeople, IDto, IAuthor<BookBaseDto>, IEquatable<AuthorDto>
     {
-        public List<BookBaseDto> Books { get; set; }
+        public ICollection<BookBaseDto> Books { get; set; }
 
         public bool Equals(AuthorDto other)
         {

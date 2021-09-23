@@ -15,7 +15,7 @@ namespace DAL.Entitys.Dto
     {
         public AuthorBaseDto Author { get; set; }
 
-        public List<GenryBaseDto> Genre { get; set; }
+        public ICollection<GenryBaseDto> Genre { get; set; }
 
         public bool Equals(BookDto other) => other.Title == Title
             && Author.Equals(other.Author)
@@ -24,9 +24,10 @@ namespace DAL.Entitys.Dto
         public override bool Equals(object obj)
             => Equals(obj as BookDto);
 
-        public override int GetHashCode() => Title.GetHashCode()
-            ^ Author.GetHashCode()
-            ^ Genre.GetHashCode();
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id,Title,Author,Genre);
+        }
 
         public override string ToString()
             => string.Format("{0} {1} {2}", Title, Author.ToString(), Genre.ToString());

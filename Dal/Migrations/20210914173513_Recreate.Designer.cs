@@ -4,14 +4,16 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210914173513_Recreate")]
+    partial class Recreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +73,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int>("AuthorModelId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateTimeAdd")
@@ -91,7 +93,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("AuthorModelId");
 
                     b.HasIndex("PeopleModelId");
 
@@ -172,9 +174,9 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entitys.Model.BookModel", b =>
                 {
-                    b.HasOne("DAL.Entitys.Model.AuthorModel", "Author")
+                    b.HasOne("DAL.Entitys.Model.AuthorModel", null)
                         .WithMany("Books")
-                        .HasForeignKey("AuthorId")
+                        .HasForeignKey("AuthorModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -183,8 +185,6 @@ namespace DAL.Migrations
                         .HasForeignKey("PeopleModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("DAL.Entitys.Model.AuthorModel", b =>

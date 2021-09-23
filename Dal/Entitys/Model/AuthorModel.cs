@@ -1,10 +1,9 @@
 ﻿using DAL.Entitys.Interfaces;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Entitys.Model
 {
-    public class AuthorModel : IRecord, IPeople, IAuthor<BookModel>
+    public class AuthorModel : Inheritance, IRecord, IPeople, IAuthor<BookModel>
     {
         public int Id { get; set; }
 
@@ -14,6 +13,6 @@ namespace DAL.Entitys.Model
 
         public string MidleName { get; set; }
 
-        public virtual List<BookModel> Books { get; set; } = new List<BookModel>();
+        public virtual ICollection<BookModel> Books { get; set; }
     }
 }

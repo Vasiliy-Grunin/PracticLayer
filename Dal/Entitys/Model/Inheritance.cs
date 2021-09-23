@@ -1,13 +1,14 @@
-﻿using DAL.Entitys.Dto;
-using DAL.Entitys.Interfaces;
+﻿using DAL.Entitys.Interfaces;
 using System;
 
-namespace DAL.Entitys.Dto
+namespace DAL.Entitys.Model
 {
-    public class BookInheritanceDto : BookDto, IInheritance, IDto
+    public class Inheritance : IInheritance
     {
         public DateTime DateTimeAdd { get; set; }
+
         public DateTime DateTimeChange { get; set; }
+
         public int? Version { get; set; }
     }
 }

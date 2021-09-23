@@ -6,6 +6,6 @@ namespace DAL.Entitys.Interfaces
     {
         DateTime DateTimeAdd { get; set; }
         DateTime DateTimeChange { get; set; }
-        int Version { get; set; }
+        int? Version { get; set; }
     }
 }

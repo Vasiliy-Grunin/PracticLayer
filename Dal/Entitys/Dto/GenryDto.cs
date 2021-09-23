@@ -8,11 +8,13 @@ namespace DAL.Entitys.Dto
     [DataContract]
     public class GenryDto : GenryBaseDto, IDto, IGenry<BookBaseDto>, IEquatable<GenryDto>
     {
-        public List<BookBaseDto> Books { get; set; }
+        public ICollection<BookBaseDto> Books { get; set; }
 
         public bool Equals(GenryDto other)
         {
-            throw new NotImplementedException();
+            return other.Books.Equals(Books)
+                && other.Id.Equals(Id)
+                && other.Name.Equals(Name);
         }
 
         public override bool Equals(object obj)

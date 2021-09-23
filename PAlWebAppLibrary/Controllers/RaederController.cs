@@ -1,8 +1,9 @@
 ﻿using DAL.Entitys.Dto;
-using Service.UnityOfwork;
+using DataServices.UnityOfwork;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using PAlWebAppLibrary.Models;
 
 namespace Library.PAL.Controllers
 {
@@ -84,9 +85,9 @@ namespace Library.PAL.Controllers
         [HttpDelete("PersonDto/Reader/")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ReaderDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<int> DeleteBook([FromBody][Bind("LastName,Name,MidleName,Books")] ReaderDto reader)
+        public ActionResult<int> DeleteBook(ReaderBaseDto reader, BookBaseDto book)
         {
-            return service.Readers.RemoveBook(reader)
+            return service.Readers.RemoveBook(reader,book)
                 ? Ok(service.Complete())
                 : NotFound(reader);
         }
@@ -97,6 +98,7 @@ namespace Library.PAL.Controllers
         /// <param name="person"></param>
         /// <returns>raeder</returns>
         [HttpPost("PersonDto/LastNameNameMidleName/")]
+        [ValidateAntiForgeryToken]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ReaderDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<ReaderDto> AddPerson([FromBody][Bind("LastName,Name,MidleName")] ReaderDto people)
@@ -149,14 +151,29 @@ namespace Library.PAL.Controllers
         /// </summary>
         /// <param name="person"></param>
         /// <returns>raeder</returns>
-        [HttpPut("PersonDto/LastNameNameMidleName/")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ReaderDto))]
+        [HttpPut("PersonDto/LibraryCard/")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LibraryCardViewModel))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<ReaderDto> UpdeteBook([FromBody][Bind("LastName,Name,MidleName")] ReaderDto reader)
+        public ActionResult<LibraryCardViewModel> RemoveBook(LibraryCardViewModel libraryCard)
         {
-            return service.Readers.RemoveBook(reader)
-                ? Ok(reader)
-                : NotFound(reader);
+            return service.Readers.RemoveBook(libraryCard.Reader,libraryCard.Book)
+                ? Ok(libraryCard)
+                : NotFound(libraryCard);
+        }
+
+        /// <summary>
+        /// Update reader
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns>raeder</returns>
+        [HttpPut("PersonDto/LibraryCard/")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LibraryCardViewModel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<LibraryCardViewModel> AddBook(LibraryCardViewModel libraryCard)
+        {
+            return service.Readers.AddBook(libraryCard.Reader, libraryCard.Book)
+                ? Ok(libraryCard)
+                : NotFound(libraryCard);
         }
     }
 }

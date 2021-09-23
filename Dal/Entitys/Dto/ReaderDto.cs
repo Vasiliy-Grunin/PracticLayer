@@ -8,7 +8,7 @@ namespace DAL.Entitys.Dto
     [DataContract]
     public class ReaderDto : ReaderBaseDto,  IEquatable<ReaderDto>, IPerson
     {
-        public List<BookBaseDto> Books { get; set; }
+        public ICollection<BookBaseDto> Books { get; set; }
 
         public bool Equals(ReaderDto other) => Name == other.Name
                 && LastName == other.LastName
@@ -19,7 +19,7 @@ namespace DAL.Entitys.Dto
 
         public override string ToString()
         {
-            return string.Format("{{0}} {{1}} {{2}} {{4}}", LastName, Name, MidleName, Birthday);
+            return $"{LastName} {Name} {MidleName} {Birthday}";
         }
 
         public override int GetHashCode()
