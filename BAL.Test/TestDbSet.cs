@@ -9,8 +9,8 @@ namespace BAL.Tests
     public class TestDbSet<T> : DbSet<T>, IQueryable, IEnumerable<T>
         where T : class
     {
-        ObservableCollection<T> _data;
-        IQueryable _query;
+        readonly ObservableCollection<T> _data;
+        readonly IQueryable _query;
 
         public TestDbSet()
         {

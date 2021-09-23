@@ -7,6 +7,6 @@ namespace DAL.Entitys.Interfaces
 {
     interface IAuthor<T> : IPeople where T : IBook
     {
-        List<T> Books { get; set; }
+        ICollection<T> Books { get; set; }
     }
 }

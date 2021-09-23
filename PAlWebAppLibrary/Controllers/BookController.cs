@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
-using Service.UnityOfwork;
+using DataServices.UnityOfwork;
 using DAL.Entitys.Dto;
 
 namespace Library.PAL.Controllers
@@ -55,6 +55,7 @@ namespace Library.PAL.Controllers
         /// <param name="book"></param>
         /// <returns></returns>
         [HttpPost("book/AuthorNameDirection/")]
+        [ValidateAntiForgeryToken]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BookDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult CreateBook([FromBody][Bind("Author,Name,Direction")] BookDto book)

@@ -6,12 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using DAL.Data;
-using Service.UnityOfwork;
-using Service.MappingService;
+using DataServices.UnityOfwork;
+using DataServices.MappingService;
 using System.Linq;
 using AutoMapper;
 
-namespace  PAlWebAppLibrary
+namespace PAlWebAppLibrary
 {
     public class Startup
     {
@@ -36,7 +36,7 @@ namespace  PAlWebAppLibrary
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddTransient<IUnityOfWork, UnitOfWork>();
+            services.AddScoped<IUnityOfWork, UnitOfWork>();
 
             services.AddMvc();
             services.AddMemoryCache();

@@ -1,10 +1,5 @@
 ﻿using DAL.Entitys.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Entitys.Dto
 {
@@ -14,6 +9,7 @@ namespace DAL.Entitys.Dto
 
         [Required]
         [StringLength(50, MinimumLength = 1)]
+        [RegularExpression(@"^[A-Z][a-zA-Z]*$")]
         public string Name { get; set; }
 
 

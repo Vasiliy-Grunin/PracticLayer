@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DAL.Entitys.Model
 {
-    public class PeopleModel : IRecord, IPeople
+    public class PeopleModel : Inheritance, IRecord, IPeople
     {
         public int Id { get; set; }
 
@@ -16,6 +16,6 @@ namespace DAL.Entitys.Model
 
         public DateTime Birthday { get; set; }
 
-        public virtual List<BookModel> Books { get; set; } = new List<BookModel>();
+        public virtual ICollection<BookModel> Books { get; set; }
     }
 }
